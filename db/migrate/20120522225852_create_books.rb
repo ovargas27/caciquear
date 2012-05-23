@@ -4,8 +4,8 @@ class CreateBooks < ActiveRecord::Migration
       t.string :title
       t.integer :pages
       t.date :published_at
-      t.string :isbn-10
-      t.string :isbn-13
+      t.string :isbn_10
+      t.string :isbn_13
 
       t.timestamps
     end
