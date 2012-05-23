@@ -1,8 +1,6 @@
-books = { "Foo" => {title: "Foo Book"} }
-
 When /^I fill book form with "(.*?)" book data$/ do |book|
-  title = books[book][:title]
-  fill_in 'Title', :with => title 
+  book = FactoryGirl.build(:book)
+  fill_in 'Title', :with => book.title 
 end
 
 When /^I submit book form$/ do
@@ -10,6 +8,6 @@ When /^I submit book form$/ do
 end
 
 Then /^"(.*?)" book should been created$/ do |book|
-  title = books[book][:title]
-  Book.where(title: title).count.should == 1
+  book = FactoryGirl.attributes_for(:book)
+  Book.where(title: book[:title]).count.should == 1
 end
